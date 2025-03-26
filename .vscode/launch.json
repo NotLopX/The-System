@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "The System",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/The_System.exe",
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "console": "integratedTerminal"
+        }
+    ]
+}
