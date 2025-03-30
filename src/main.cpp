@@ -1,3 +1,5 @@
+#include "system_lib.h"
+
 //#############################################################################
 //								PLATFORM GLOBALS
 //#############################################################################
@@ -66,7 +68,7 @@ bool platform_create_window(int width, int height,char* name)
 
 	int dwStyle = WS_OVERLAPPEDWINDOW;
 
-	window = CreateWindowExA(0,name,
+	window = CreateWindowExA(WS_EX_LAYERED,name,
 									name,
 									dwStyle,
 									100,
@@ -83,6 +85,8 @@ bool platform_create_window(int width, int height,char* name)
 	{
 		return false;
 	}
+
+	SetLayeredWindowAttributes(window, 0, 200, LWA_ALPHA);
 
 	ShowWindow(window,SW_SHOW);
 
@@ -106,11 +110,16 @@ void platform_update_window()
 
 int main()
 {
-	platform_create_window(1920, 1080,"The System");
+	platform_create_window(720, 480,"The System");
 	while(running)
     {
         //update
 		platform_update_window();
+
+		SM_TRACE("Test");
+		SM_WARN("Test");
+		SM_ERROR("Test");
+		SM_ASSERT(false,"Assertion hit");
     }
  
     return 0;
